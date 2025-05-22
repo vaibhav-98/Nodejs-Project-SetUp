@@ -45,8 +45,8 @@ async function getAirplanes(req, res) {
  */
 async function getAirplane(req, res) {
   try {
-    const airplanes = await AirplaneService.getAirplane(req.params.id);
-    SuccessResponse.data = airplanes;
+    const airplane = await AirplaneService.getAirplane(req.params.id);
+    SuccessResponse.data = airplane;
     return res.status(StatusCodes.CREATED).json(SuccessResponse);
   } catch (error) {
     ErrorResponse.error = error;

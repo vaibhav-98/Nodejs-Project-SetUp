@@ -35,8 +35,8 @@ async function getAirplanes() {
 
 async function getAirplane(id) {
     try {
-         const airplanes = await airplaneRepository.get(id);
-         return airplanes
+         const airplane = await airplaneRepository.get(id);
+         return airplane
     } catch (error) {
         if(error.statusCode == StatusCodes.NOT_FOUND) {
             throw new AppError('The airplane you requested is not present', error.statusCode)
