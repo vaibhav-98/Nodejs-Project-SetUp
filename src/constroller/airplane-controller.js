@@ -69,9 +69,32 @@ async function destroyAirplane(req, res) {
   }
 }
 
+/**
+ * UPDATE: /airplanes/:id
+ */
+
+async function updateAirplane(req,res) {
+    try {
+        
+      console.log(">>>", req.params.id, req.body.modelNumber, req.body.capacity);
+        
+        const updatedAirplane = await AirplaneService.updateAirplane(req.params.id,{ 
+             modelNumber: req.body.modelNumber,
+             capacity: req.body.capacity
+    });
+        
+        SuccessResponse.data = updatedAirplane
+        return res.status(StatusCodes.OK).json(SuccessResponse);
+    } catch (error) {
+          ErrorResponse.error = error;
+          return res.status(500).json("abc");
+    }
+}
+
 module.exports = {
   createAirplane,
   getAirplanes,
   getAirplane,
   destroyAirplane,
+  updateAirplane
 };
