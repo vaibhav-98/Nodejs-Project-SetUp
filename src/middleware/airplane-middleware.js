@@ -4,7 +4,7 @@ const { ErrorResponse} = require('../utils/common')
 const AppError = require('../utils/errors/app-error')
 
 function validateCreateRequest(req,res,next) {
-    if(!req.body.modelNumber) {
+    if(!req.body.modelNumber ) {
           ErrorResponse.message = "Something went wrong while create airplane",
           ErrorResponse.error = new AppError (['Model Number not found in the oncoming request'],StatusCodes.BAD_REQUEST)
          return res
