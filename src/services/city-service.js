@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const { CityRepository } = require("../repositories");
 const AppError = require("../utils/errors/app-error");
 const { StatusCodes } = require("http-status-codes");
@@ -28,7 +29,25 @@ async function createCity(data) {
 }
 
 
+async function updateCity (id, data) {
+  console.log(id,data);
+  
+  try {
+     const  updatedCity = await cityRepository.update(id,data)
+      return updatedCity
+  } catch (error) {
+      if(error.statusCode == StatusCodes.NOT_FOUND) {
+       throw new AppError("The City you requested to update is not present", error.statusCode );
+      }
+      throw new AppError('connot fetch data of provide id ', StatusCodes.INTERNAL_SERVER_ERROR)
+  }
+}
+
+
+
+
 
 module.exports = {
-    createCity
+    createCity,
+    updateCity
 }
