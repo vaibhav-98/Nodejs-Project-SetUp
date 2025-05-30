@@ -15,7 +15,7 @@ Lets take a look inside the src folder
 `repositories` -> this folder contains all the logic using which we interact the DB by writing queries, all the raw queries or ORM queries will go here.
 
 `services` -> contains the buiness logic and interacts with repositories for data from the database
-
+ 
 `utils` -> contains helper methods, error classes etc.
 
 ### Setup the project 
