@@ -12,5 +12,15 @@ router.post('/',
                 FlightController.createFlight)    
 
 router.get('/', 
-         FlightController.getAllFlights)                
+         FlightController.getAllFlights)     
+         
+ // /api/flights/:id    GET       
+router.get('/:id', 
+         FlightController.getFlight)           
+
+// /api/flights/seats  PATCH 
+
+router.patch('/:id/seats',
+          FlightMiddleware.validateUpdateSeatsRequest,
+          FlightController.updateSeats)
 module.exports = router;
